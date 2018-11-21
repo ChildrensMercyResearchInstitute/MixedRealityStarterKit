@@ -43,9 +43,12 @@ The Mixed Reality Starter Kit was created as a reusable template for quickly pub
 	4. Your Unity project and assets are now ready to build and test.
 	
 1.	Software dependencies
-    1. Microsoft Windows 10 with Fall Creator's Update installed. You can get a free virtual development environment from Microsoft here: https://developer.microsoft.com/en-us/windows/downloads/virtual-machines
-    1. Unity 3D 2017.2.0f3, available here (use the "**Unity 2017.2.0   12 Oct, 2017**" download link): https://unity3d.com/get-unity/download/archive 
-    1. Visual Studio 2017 15.4 or higher: https://www.visualstudio.com/downloads/
+    1. Microsoft Windows 10 with Fall Creator's Update installed.
+    1. Unity 3D 2017 Long Term Support LTS Release 2017.4.15f1 or higher, available here: https://unity3d.com/unity/qa/lts-releases
+		1. Microsoft  recommends the Long Term Release version of Unity 3D 2017 because the 2018 and newer versions of Unity may have yet-to-be-discovered programming differences that could be incompatible with current HoloLens software.
+		1. See full Microsoft documentation here for details: https://docs.microsoft.com/en-us/windows/mixed-reality/install-the-tools
+    1. Visual Studio 2017 or higher, available here: https://www.visualstudio.com/downloads/
+		1. Select the option to install Universal Windows Platform development tools when prompted by Visual Studio installer.
 	1. Microsoft Mixed Reality Toolkit, available here: https://github.com/Microsoft/MixedRealityToolkit-Unity
 
 
@@ -55,7 +58,7 @@ The Mixed Reality Starter Kit was created as a reusable template for quickly pub
 	1. Navigate to Assets/Scenes/MRStarterKitDemoScene.unity
 	1. Double click on MRStarterKitDemoScene.unity to open the scene.
 	1. Unity will load the sample scene. 
-1. Look at Unity's Hierarchy panel (usually located on the left side of the screen in Unity). You should see several objects listed in the heirarchy, which can be expanded to show child objects by clicking the triangles next to each item in the list:
+1. Look at Unity's Hierarchy panel (usually located on the left side of the screen in Unity). You should see several objects listed in the hierarchy, which can be expanded to show child objects by clicking the triangles next to each item in the list:
 	1. MixedRealityCameraParent - A collection of objects and scripts from Microsoft's MixedRealityToolkit that detect where the user is gazing while wearing the HoloLens. 
 	1. InputManager - A collection of objects and scripts from Microsoft's MixedRealityToolkit that handle gesture-based inputs, spatial mapping, and other events that fire while a HoloLens app is running.
 	1. Cursor - A collection of objects and scripts from Microsoft's MixedRealityToolkit that control the display of the in-app cursor.
@@ -66,7 +69,7 @@ The Mixed Reality Starter Kit was created as a reusable template for quickly pub
 				- ButtonShowVoiceCommands: When the user taps this button, the VoiceCommandDetails collection of objects (described below) becomes visible.
 				- ButtonShowDetailedControls: Tapping this button makes the UIControlsDetailed (described below) visible.
 			1. UIControlsDetailed: By default, these controls are hidden from view when the app launches and are made visible when the user taps ButtonShowDetaieldControls. 
-				- ButtonHideDetailedControls: Tapping this button hides the UIControlsDetailed colelction of buttons.
+				- ButtonHideDetailedControls: Tapping this button hides the UIControlsDetailed collection of buttons.
 				- ButtonUp: Tapping this button rotates the model 10 degrees on its horizontal axis.
 				- ButtonDown: Tapping this button rotates the model 10 degrees on its horizontal axis in the opposite direction of ButtonUp.
 				- ButtonLeft: Tapping this button rotates the model 10 degrees counter-clockwise on its vertical axis.

@@ -1,151 +1,291 @@
 # Introduction 
-The Mixed Reality Starter Kit was created as a reusable template for quickly publishing apps that display interactive 3D holograms to Microsoft's HoloLens with little to no programming or scripting knowledge. The kit includes basic visual buttons, hand gestures, and voice commands for model rotation, resizing, hiding portions of a model, and undoing these actions.
+The Mixed Reality Starter Kit is a reusable collection of C# scripts and Unity prefabricated assets (prefabs) that can be used to quickly develop and publish HoloLens apps that display interactive 3D holograms with little to no programming or scripting knowledge. The kit's user interfaces include visual buttons, hand gestures, and voice commands for model rotation, resizing, hiding, and showing portions of a model.
 
+If you're new to Unity and HoloLens, try our **[MixedRealityStarterKitDemo](https://github.com/ChildrensResearchInstitute/MixedRealityStarterKitDemo)** project for Unity 2018, available at the link below. The demo project will familiarize you with the basic workflow of publishing a HoloLens app without going into the details of building a project, scene, and app from scratch.
+
+* https://github.com/ChildrensResearchInstitute/MixedRealityStarterKitDemo
+
+
+### Working App Demo Videos: 
+1. https://www.youtube.com/watch?v=O6x1AsDEqno
+2. https://www.youtube.com/watch?v=CEtRWAKekWA
+3. https://www.youtube.com/watch?v=0jjTI3yN78w
+
+
+
+###	Software Dependencies
+1. Microsoft Windows 10 with Fall Creator's Update installed.
+1. HoloLens Developer Mode enabled. Read how to enable Developer Mode here: https://docs.microsoft.com/en-us/windows/mixed-reality/using-visual-studio
+1. Unity 2018.2.16f1, available here: https://store.unity.com/
+1. Visual Studio 2017 or higher, available here: https://www.visualstudio.com/downloads/
+	 - Select the option to install Universal Windows Platform development tools when prompted by Visual Studio installer.
+1. Microsoft Mixed Reality Toolkit, available here: https://github.com/Microsoft/MixedRealityToolkit-Unity
+
+### Hardware Requirements
+1. Windows 10-compatible PC with sufficient resources for software dependencies above.
+1. Microsoft HoloLens - you can also use the HoloLens Emulator, available for Visual Studio 2017 here: https://docs.microsoft.com/en-us/windows/mixed-reality/using-the-hololens-emulator
 
 # Getting Started
-1.	Installation process
+
+In this guide, we will step through building a HoloLens app from start to finish in Unity 2018 and Visual Studio 2017. These steps include:
+
+
+>1. Setting up Unity for HoloLens development by creating a new project, installing Microsoft's HoloToolKit, and installing Children's Research Institute's Mixed Reality Starter Kit
+>1. Configuring a new Unity project for HoloLens
+>1. Configuring a new Unity scene for HoloLens
+>1. Adding the Mixed Reality Starter Kit's prefab UI assets to the scene
+>1. Adding a 3D model to the scene
+>1. Wiring up button, gesture, and voice commands
+>1. Building and deploying your project to HoloLens
+
+
+1. **How to set up MixedRealityStarterKit with a new Unity project**
+	
+
 	1. Clone or download this repository from GitHub.
 	1. Clone or download Microsoft's Mixed Reality Toolkit from https://github.com/Microsoft/MixedRealityToolkit-Unity
 	1. Open Unity and create a new project:
 		1. Ensure that the 3D option is selected next to the project's name.
 		1. Tip: Keep folder paths and project names short and do not include spaces in your project's name. Unity struggles with long file paths and file names as well as spaces in those paths.
-		1. Example Project Name: MRStarterKitDemo
+		1. Example Project Name: MixedRealityStarterKitDemo
 		1. Example Location: c:\u\ 
 	1. Unity will create a folder based on your project name and build a folder structure and standard files for your new project inside the project's folder.
 		1. For the example project name and location above, the folder hierarchy will look like this:
     ```
-	C:\u\MRStarterKitDemo\
+	C:\u\MixedRealityStarterKitDemo\
     ├───Assets
     ├───Library
+    ├───Packages
     ├───ProjectSettings
     ├───Temp
-    ├───UnityPackageManager
-    MRStarterKitDemo.sln
+    MixedRealityStarterKitDemo.sln
     ```
-	3. Use Windows Explorer to copy the HoloToolkit folder from the Microsoft Mixed Reality Toolkit's Assets folder:
-		1. In Windows Explorer, navigate to the exteracted location of Microsoft's Mixed Reality Toolkit.
+	3. Use Windows Explorer to copy the HoloToolkit folder from the Microsoft Mixed Reality Toolkit's Assets folder into your new project's Assets folder:
+		1. In Windows Explorer, navigate to the extracted location of Microsoft's Mixed Reality Toolkit.
 		1. Open the Assets folder at the root of the Mixed Reality Toolkit folder hierarchy.
 		1. Copy the HoloToolkit folder.
 		1. Navigate to the the location of your new Unity project.
 		1. Double-click on the project's folder.
 		1. Double-click on the Assets folder inside the project's folder.
 		1. Paste the copied HoloToolkit folder into the project's Assets folder.
-		1. Unity will process the copied files, making them available for use in your project.
-	3. Use Windows Explorer to copy the contents of this git repo's Assets folder to your new project's Assets folder:
+
+	3. Use Windows Explorer to copy the MixedRealityStarterKit folder from this git repo into your new project's Assets folder:
 		1. In Windows Explorer, navigate to the extracted location of this git repo.
-		1. Open the Assets folder at the root of the MRStarterKitDemo folder hierarchy.
-		1. Copy all of the contents of the Assets folder.
+		1. Copy the MixedRealityStarterKit folder.
 		1. Navigate to the location of your new Unity project.
 		1. Double-click on the project's folder.
 		1. Double-click on the Assets folder inside the project's folder.
-		1. Paste the copied files into the project's Assets folder.
-		1. Unity will process the copied files, making them available for use in your project.
-	4. Your Unity project and assets are now ready to build and test.
+		1. Paste the copied MixedRealityStarterKit folder into the project's Assets folder.
+
+    3. Switch back to Unity, where you may see a progress bar, indicating you need to wait for Unity to complete processing the files within the HoloToolKit and MixedRealityStarterKit folders. Once all progress bars complete, you can proceed to project configuration.
+
+1. **Configuring a new Unity project for HoloLens**
+
+	1. In Unity, remove the TextMeshPro software package from the project:
+		1. Click the Window menu at the top of the screen and select Package Manager
+		1. In the Packages window, click the "In Project" tab
+		1. Click once on TextMesh Pro
+		1. Click the Remove button near the top right corner of the window
+		1. Once the progress bar completes, close the Packages window
+		1. Click File -> Save Project
+
+	1. In Unity, apply Mixed Reality Settings to the project:
+		1. Click the Mixed Reality Toolkit menu at the top of the screen and select Configure -> Apply Mixed Reality Project Settings.
+		1. In the Apply Mixed Reality Settings window, click the Apply button to apply these settings to your project. This readies the project to be built into a Visual Studio solution that can then be built and deployed to the HoloLens.
+		1. Click on Unity's file menu and select Save Project.
 	
-1.	Software dependencies
-    1. Microsoft Windows 10 with Fall Creator's Update installed.
-    1. Unity 3D 2017 Long Term Support LTS Release 2017.4.15f1 or higher, available here: https://unity3d.com/unity/qa/lts-releases
-		1. Microsoft  recommends the Long Term Release version of Unity 3D 2017 because the 2018 and newer versions of Unity may have yet-to-be-discovered programming differences that could be incompatible with current HoloLens software.
-		1. See full Microsoft documentation here for details: https://docs.microsoft.com/en-us/windows/mixed-reality/install-the-tools
-    1. Visual Studio 2017 or higher, available here: https://www.visualstudio.com/downloads/
-		1. Select the option to install Universal Windows Platform development tools when prompted by Visual Studio installer.
-	1. Microsoft Mixed Reality Toolkit, available here: https://github.com/Microsoft/MixedRealityToolkit-Unity
+1. **Configuring a new Unity scene for HoloLens**
+
+	1. In Unity's Hierarchy panel, located on the left side of the screen, delete Main Camera and Directional Light:
+		1. Right click on the words Main Camera and select Delete from the menu that appears.
+		1. Right click on the words Directional Light and select Delete from the menu that appears.
+	1. Apply Mixed Reality Scene Settings to your scene:
+		1. Click the Mixed Reality Toolkit menu at the top of the screen and select Configure -> Apply Mixed Reality Scene Settings.
+		1. In the Apply Mixed Reality Scene Settings window, click the Apply button to apply these settings to your scene. This step adds HoloLens-specific objects to the scene's hierarchy: MixedRealityCameraParent, DefaultCursor, and InputManager. 
+	1. Add UWP (Universal Windows Platform) capabilities to your scene:
+		1. Click the Mixed Reality Toolkit menu at the top of the screen and select Configure -> Apply UWP Capability Settings.
+		1. Check the box next to Microphone, this enables your app to hear voice commands via the HoloLens' microphone.
+		1. Uncheck the box next to Spatial Perception. We don't use that capability in this app.
+		1. Click on Unity's File menu and select Save Scene.
+1. **Adding Mixed Reality Starter Kit's prefab UI assets to your scene**
+	1. In Unity's Project panel, located in the bottom left of the screen, click the Assets folder
+	1. In the Assets list that appears to the right of the Project panel, double click MixedRealityStarterKit.
+	1. In the list that appears, double click the Prefabs folder.
+	1. In the list that appears, click and drag the "MixedRealityStarterKit Lighting" item into the Hierarchy panel in the top left corner of the screen and drop it into the list below InputManager.
+	1. Click and drag the MixedRealityStarterKitUI item into the Hierarchy panel and drop it into the list below MixedRealityStarterKit Lighting.
+	1. The Hierarchy panel should now have the following elements listed, and you will likely see the visible Mixed Reality Starter Kit UI appear in Unity's Scene panel. 
+		```
+		MixedRealityCameraParent
+		DefaultCursor
+		InputManager
+		MixedRealityStarterKit Lighting
+		MixedRealityStarterKitUI
+		```
+1. **Adding a 3D model to the scene**
+	1. Create an empty Game Object that will be used as a container for your model and also enable voice commands:
+		1. In Unity's Hierarchy panel, right click in the gray area beneath MixedRealityStarterKitUI
+		1. Select Create Empty from the menu that appears.
+		1. Right click on the "GameObject" item that appears in the Hierarchy panel, and select Rename.
+		1. Change GameObject's name to "SpeechInputSourceTarget - Place Your Model Here" - this will be a good reminder in the future if you decide to replicate this project for additional models and apps.
+	1. In Windows Explorer, copy your 3D model file into your Unity project's Assets folder, or use the sample model found in this repository:
+		1. To use the sample model, copy the SampleModel folder from this repository into your project's Assets folder. 
+		1. The SampleModel folder contains a 3D model, SampleModel.obj, and a folder named Materials, which contains multiple material files.
+		1. Materials are used to assign colors and textures to portions (also known as meshes or mesh groups) of 3D models in Unity. If you'd like to know more, you can read about Materials, Shaders, and Textures in Unity's documentation here: https://docs.unity3d.com/Manual/Shaders.html
+	1. In Unity's Project panel, navigate to the folder that contains the model file (e.g. Assets/SampleModel/)
+	1. Drag the model file onto the "SpeechInputSourceTarget - Place Your Model Here" item in the Hierarchy panel. A blue circle will appear around "SpeechInputSourceTarget - Place Your Model Here" to indicate you are dropping the model into the SpeechInputSourceTarget container.
+	1. Your Hierarchy should have the following elements listed. You may need to click the triangle next to SpeechInputSourceTarget to verify your model was placed correctly:
+		```
+		MixedRealityCameraParent
+		DefaultCursor
+		InputManager
+		MixedRealityStarterKit Lighting
+		MixedRealityStarterKitUI
+		SpeechInputSourceTarget - Place Your Model Here
+		├─── SampleModel
+		```
+	
+	1. Resize your model as needed. You may need to scale your model's size up or down to get it to fit properly into the scene so you'll see it when the app launches. 
+		1. In Unity's Hierarchy panel, click once on your model's name to select it.
+		1. In Unity's Inspector panel, located on the right side of the screen, you will see a Transform section.
+		1. In the Transform section, adjust the X, Y, and Z values next to the Scale heading up or down as needed to get your model to an appropriate size. Try to make it a little smaller than the visible user interface elements. Always set the Scale's X, Y, and Z values to be the same (e.g. X = 0.5, Y = 0.5, Z = 0.5) to increase or decrease size while keeping the model's aspect ration intact (so it doesn't look squished or stretched).
+			1. If you're using the SampleModel included in this repository, use these values: 
+				```
+				X = 0.002, Y = 0.002, Z = 0.002
+				```
+	1. Position the SpeechInputSourceTarget container as needed to ensure your model is visible when the app is launched on the HoloLens. Since your 3D model is contained inside the SpeechInputSourceTarget object, adjusting the position of SpeechInputSourceTarget also adjusts the position of the model itself. To position your model to be to the left of the visible UI buttons, do this:
+		1. In Unity's Hierarchy panel, click once on "SpeechInputSourceTarget - Place Your Model Here" to select it.
+		1. In Unity's Inspector panel, set the Position's Z value to 2. This will place the 3D model approximately 2 meters in front of the person wearing the HoloLens when the app is launched.
+		1. If needed, you can also adjust the X value of SpeechInputSourceTarget's Position to move the model left and right in the scene. For example, setting X = -0.05 will nudge the model slightly to the left of where it was originally positioned.
+		1. The final result should have your 3D model positioned next to the visible UI buttons in the Scene area of the screen.
+		1. Once you're happy with your 3D model's positioning, click Unity's File menu and select Save Scene.
 
 
-# Build and Test
-1. In Unity, open the sample scene, MRStarterKitDemoScene.unity:
-	1. Click File -> Open Scene
-	1. Navigate to Assets/Scenes/MRStarterKitDemoScene.unity
-	1. Double click on MRStarterKitDemoScene.unity to open the scene.
-	1. Unity will load the sample scene. 
-1. Look at Unity's Hierarchy panel (usually located on the left side of the screen in Unity). You should see several objects listed in the hierarchy, which can be expanded to show child objects by clicking the triangles next to each item in the list:
-	1. MixedRealityCameraParent - A collection of objects and scripts from Microsoft's MixedRealityToolkit that detect where the user is gazing while wearing the HoloLens. 
-	1. InputManager - A collection of objects and scripts from Microsoft's MixedRealityToolkit that handle gesture-based inputs, spatial mapping, and other events that fire while a HoloLens app is running.
-	1. Cursor - A collection of objects and scripts from Microsoft's MixedRealityToolkit that control the display of the in-app cursor.
-	1. SceneContents - A collection of objects and scripts that make up the Mixed Reality Starter Kit, including the visual user interface and our sample 3D model. 
-		1. UI - A collection of objects and scripts that render a visible user interface the user will see when using the app.
-			1. UIControlsDefault: By default these controls are visible in the scene when the app launches.
-				- MRStarterKitLabel: The title area and text that appear above the visible UI controls in the scene.
-				- ButtonShowVoiceCommands: When the user taps this button, the VoiceCommandDetails collection of objects (described below) becomes visible.
-				- ButtonShowDetailedControls: Tapping this button makes the UIControlsDetailed (described below) visible.
-			1. UIControlsDetailed: By default, these controls are hidden from view when the app launches and are made visible when the user taps ButtonShowDetaieldControls. 
-				- ButtonHideDetailedControls: Tapping this button hides the UIControlsDetailed collection of buttons.
-				- ButtonUp: Tapping this button rotates the model 10 degrees on its horizontal axis.
-				- ButtonDown: Tapping this button rotates the model 10 degrees on its horizontal axis in the opposite direction of ButtonUp.
-				- ButtonLeft: Tapping this button rotates the model 10 degrees counter-clockwise on its vertical axis.
-				- ButtonRight: Tapping this button rotates the model 10 degrees clockwise on its vertical axis.
-				- ButtonLarge: Tapping this button enlarges the model by 10%.
-				- ButtonSmall: Tapping this button reduces the size of the model by 10%.
-				- ButtonReset: Tapping this button unhides all parts of the model (mesh groups) that were hidden by the user.
-				- ButtonUndoHide: Tapping this button unhides the last-hidden part of the model. If multiple parts of the model are hidden, the user can tap this button repeatedly to bring back hidden parts of the model one at a time until everything that had been hidden is visible again.
-			1. VoiceCommandDetails: A collection of objects that render a modal dialog to the screen that displays available voice commands for the app. Hidden by default, this collection is made visible when the user taps ButtonShowVoiceCommands
-				- Background: Object that forms the background of the VoiceCommandDetails modal dialog.
-				- Text: Contains the text displayed in VoiceCommandDetails.
-				- ButtonCloseVoiceCommandDetails: Tapping this button near the bottom of the modal dialog hides the VoiceCommandDetails collection.
-				- ButtonXCloseVoiceCommandDetails: Tapping this button in the top right corner of the modal dialog hides the VoiceCommandDetails collection.
-		1. SampleModel: The sample 3D model which contains many mesh groups.
-			- mmGroup0: One of the mesh groups that makes up the SampleModel. Scripts from the MR Starter Kit are applied to select mesh groups to facilitate interaction.
-			- mmGroup1
-			- ... (multiple mmGroup items)
-			- mmGroup6
-1. In Unity, click the Mixed Reality Toolkit menu at the top of the screen and select Configre -> Apply Mixed Reality Project Settings
-1. The Apply Mixed Reality Settings window will open. Ensure the following checkboxes are checked:
-	1. Target Windows Universal UWP
-	1. Enable XR
-	1. Build for Direct3D
-	1. Enable .NET scripting backend
-1. Click the Apply button to apply these settings to your project. This readies the project to be built into a Visual Studio solution that can then be built and deployed to the HoloLens.
-1. Click on Unity's file menu and select Save Project.
-1. Click on Unity's file menu and select Save Scenes.
-1. Build the Unity Scene into a Visual Studio solution:
-	1. In Unity, click on the File menu and select Build Settings...
-	1. In the Build Settings window that appears, click the button labeled Add Open Scenes.
-	1. Ensure the following fields in the Build Settings window are set properly:
-		1. Under Scenes in Build, your scene is listed and the checkbox next to its name is checked.
-		1. In the bottom half of the screen, on the left side under Platform, Universal Windows Platform is selected.
-		1. In the bottom half of the screen, on the right side under Universal Windows Platform:
-			1. Target Device: HoloLens
-			1. Build Type: D3D
-			1. SDK: Latest Installed
-			1. Build and Run On: Local Machine
-			1. Copy References: Unchecked
-			1. Unity C# Projects: Checked
-			1. Development Build: Unchecked
-			1. Autoconnect Profiler: Unchecked
-			1. Scripts Only Build: Unchecked
-			1. Compression Method: None
-	1. Click File -> Save Project once more to save any settings you may have adjusted in the previous step. You can keep the Build Settings window open as you do this.
-	1. Click the Build button at the bottom of the Build Settings window.
-	1. Unity will prompt you to select a folder in which to build the Visual Studio solution. Near the top of the window that appears, click "New folder" and name the folder App.
-	1. Click once on the App folder you just created to highlight it, then click Select Folder near the bottom right corner of the window.
-	1. A progress bar will appear as Unity builds the Visual Studio solution.
-	1. Once the build completes, Windows Explorer will pop up a new window showning you the contents of your project's folder. If Windows Explorer does not automatically pop up a window, use Windows Explorer to navigate to your project's folder.
-	1. Double-click on the App folder to open it.
-	1. Double-click on the Visual Studio solution file (.sln) in the App folder that matches your project name (e.g. MRStarterKitDemo.sln).
-	1. Visual Stuido will open the solution file.
-	1. Configure the Visual Studio solution to deploy to the HoloLens:
-		1. At the top of the screen, adjust the Debug dropdown to read Release.
-		1. Adjust the ARM dropdown to read x86.
-		1. Adjust the Local Machine dropdown depending on your setup. We suggest a USB connection as in our experience it's faster, more reliable, and you don't need to worry about dynamic IP addresses, which typically change frequently on large Wi-Fi networks.
-			1. If your HoloLens is connected to the PC via a USB Cable, select Device.
-			1. If you wish to deploy to HoloLens via Wi-Fi, select Remote Connection:
-				1. In the window that appears, enter your HoloLens' IP address (Available in HoloLens Settings App -> Netowrk & Internet -> Wi-Fi -> Advanced options)
-				1. Authenitcation Mode: Universal (Unencrypted Protocol)
-				1. Click Select to save your settings
-	1. Build and deploy the solution to HoloLens:
-		1. Ensure that the HoloLens is powered on.
-		1. Click on the Debug menu and select Start without Debugging or press ctrl-f5.
-		1. Visual Studio will build the solution, deploy it to your HoloLens, and attempt to launch the application.
-	1. Troubleshooting Build and Deploy issues:
-		1. Visual Studio Error: Access is denied
-			- Typically, this error indicates that the app did build and deploy successfully, but Visual Studio was unable to launch the app on the HoloLens automatically for some reason. In our experience, as long as Visual Studio's build output window shows build and deploy were successful, you should be able to put on the HoloLens and launch the app.
-			- Potential Resolution 1: Uninstall the app from the HoloLens, then use Visual Studio to build and deploy the app again.
-			- Potential Resolution 2: Delete the App folder that contains the Visual Studio solution and redo all steps after "Build the Unity Scene into a Visual Studio Solution" above.
-		1. Visual Studio Error: Could not deploy while a user-defined section is open
-			- We tend to see this error when we are repeatedly building and deploying to HoloLens after making small adjustments to our Unity scene or scripting. If you see this error, your Visual Studio project did not build and deploy to the HoloLens properly.
-			- Potential Resolution 1: Clean the Visual Studio solution and try running the app without debugging again. 
-			- Potential Resolution 2: Delete the App folder that contains the Visual Studio solution and redo all steps after "Build the Unity Scene into a Visual Studio Solution" above.
 
+1. **Wiring button, gesture, and voice commands**
+	1. Add Mesh Collider and Manipulable components to all mesh groups in your 3D model:
+		1. In Unity's Hierarchy panel, click the triangle next to your 3D model's name to expand its contents. You will see a list of items that correspond to different portions,  know in Unity as "mesh groups," "mesh parts," and or "meshes" of your 3D model depending on the software that created the model. 
+			1. In our example model, clicking the triangle next to SampleModel displays a list of mesh groups from mmGroup0 to mmGroup5:
+				```
+				SampleModel
+				├─── mmGroup0   
+				├─── mmGroup1
+				├─── mmGroup2
+				├─── mmGroup3
+				├─── mmGroup4
+				├─── mmGroup5
+				```
+			1. Models can also contain nested mesh groups. If you're using your own 3D model and see more click-to-expand triangles after expanding the top level of your model, you are dealing with nested mesh groups. Click all of the triangles and expand all of the nested mesh groups you see. We can think of these nested mesh groups as being on levels. We'll talk about how to handle those below. Here's a hypothetical nested mesh group model hierarchy:
+				```
+				ComplexModel
+				├─── mmGroup0    (These mesh groups are on Level 1)
+				├─── mmGroup1
+				├─── mmGroup2
+				├─── mmGroup3
+				├─── mmGroup4
+					├─── mmGroup4_MeshPart0   (These mesh parts are on Level 2)
+					├─── mmGroup4_MeshPart1
+					├─── mmGroup4_MeshPart2
+					├─── mmGroup4_MeshPart3
+				├─── mmGroup5
+				├─── mmGroup6
+				```
+		1. In Unity's Hierarchy panel, select all of the mesh groups in your model, but do not select the model's name itself or any nested mesh group containers that have click-to-expand triangles next to them.
+		1. In Unity's Inspector panel, click Add Component.
+		1. In the search bar at the top of the Add Component window that appears, start typing the words "Mesh Collider." When you see Mesh Collider show up in the search results, click on the words Mesh Collider to add collision detection to all of your mesh groups. This enables HoloLens to detect when you've selected one of the mesh groups via air tap.
+		1. In the Inspector panel, click Add Component again.
+		1. In the search bar at the top of the Add Component window that appears, start typing the word "Manipulable." When you see Manipulable show up in the search results, click once on the word Manipulable. This adds the Manipulable script component, which facilitates interacting with the model when the app is running.
+		1. If your model contains nested mesh groups, configure the Manipulable script for those nested mesh groups:
+			1.  In Unity's Hierarchy panel, select one or more nested mesh groups that are on the same level. In the ComplexModel example above, we'd select mmGroup4_MeshPart0, mmGroup4_MeshPart1, mmGroup4_MeshPart2, and mmGroup4_MeshPart3.
+			1. In Unity's Inspector panel, under Manipulable (Script), adjust the Depth value to match the level of your selected mesh group(s). In the ComplexModel example above, we'd set depth to "Two" for mmGroup4_MeshPart0, mmGroup4_MeshPart1, mmGroup4_MeshPart2, and mmGroup4_MeshPart3.
+			1. The Mixed Reality Starter Kit's Manipulable script can currently handle up to 3 levels of depth.
+	1. Add Speech Input Source component to SpeechInputSourceTarget
+		1. In Unity's Hierarchy panel, click once on "SpeechInputSourceTarget - Place Your Model Here"
+		1. In Unity's Inspector panel, click Add Component.
+		1. In the search bar at the top of the Add Component window that appears, start typing the words "Speech Input Source."
+		1. When you see Speech Input Source show up in the search results, click once on the words Speech Input Source. This adds the Speech Input Source script component, which facilitates voice interactions.
+		1. Still in the Inspector panel, in the Speech Input Source (Script) section, add keywords to Speech Input Source by click the tiny + button located below and to the right of the Keywords heading. Assign the following keywords and key shortcuts:
+			```
+			Keyword		Key Shortcut
+			---------	-------------
+			size up 	Keypad Plus
+			size down 	Keypad Minus
+			rotate up 	Up Arrow
+			rotate down 	Down Arrow
+			rotate left 	Left Arrow
+			rotate right 	Right Arrow
+			hide this	H
+			undo hide	U
+			reset all	R
+			```
+    1. Add actions to visible UI buttons' On Click event handlers
+		1. In Unity's Hierarchy panel, click the triangle next to MixedRealityStarterKitUI to expand its contents.
+		1. Click the triangle next to UIAllVisibleControls to expand its contents.
+		1. Click the triangle next to UIButtonControls to expand its contents.
+		1. A list of button elements will appear below UIButtonControls. Do the following steps for each button listed here:
+			
+			```
+			ButtonRotateUp
+			ButtonRotateDown
+			ButtonRotateLeft
+			ButtonRotateRight
+			ButtonSizeUp
+			ButtonSizeDown
+			ButtonUndoHide
+			ButtonResetAll
+			```
+			
+			1. Click once on the button's name (for example, "ButtonRotateUp") to select the up button element in the scene.
+			1. In Unity's Inspector panel, scroll down to the On Click () section.
+			1. In the On Click () section, click the light gray circle next to the words "None (Object)."
+			1. In the Select Object window that appears, click the Scene tab.
+			1. In the Select Object's Scene tab, scroll down and double-click on the word "mmGroup0" to select the mmGroup0 mesh group as the target object of the On Click event handler for the up button.
+			1. In the On Click () section, you should now see mmGroup0 listed under the Runtime Only heading.
+			1. In the On Click () section, click the "No Function" dropdown, then hover your mouse over the word Manipulable in the nested menu that appears.
+			1. In the submenu that appears, select the function that matches the name of your button (for ButtonRotateUp, select "Manipulable -> Rotate Up ()").
+			1. The goal is to assign mmGroup0 as the target with the proper action to each button:
+			```
+			Button Name   		Select Object	Function
+			-----------------	-------------	-----------
+			ButtonRotateUp		mmgroup0	Manipulable -> RotateUp ()
+			ButtonRotateDown	mmgroup0	Manipulable -> RotateDown ()
+			ButtonRotateLeft   	mmgroup0	Manipulable -> RotateLeft ()
+			ButtonRotateRight  	mmgroup0	Manipulable -> RotateRight ()
+			ButtonSizeUp		mmgroup0	Manipulable -> ScaleUp ()
+			ButtonSizeDown		mmgroup0	Manipulable -> ScaleDown ()
+			ButtonUndoHide		mmgroup0	Manipulable -> UndoLastHide ()
+			ButtonResetAll		mmgroup0	Manipulable -> ResetAll ()
+			```
+	1. Once you've assigned functions to all of the buttons, click Unity's File menu and select Save Scene.
+	1. 	Congratulations, you've made it a long way, but you're not quite out of the woods yet! You should be ready to try to build and deploy your app at this point.
+
+1. **Building and deploying your project to HoloLens**
+
+	1. Connect the HoloLens to your PC via USB.
+	1. In Unity, with your project open, click the File menu and select "Build Settings..."
+	1. In the Build Settings window that appears, click the Build button near the bottom right corner of the window.
+	1. Unity will prompt you to select a folder in which to compile source code that Visual Studio will use to build and deploy the HoloLens app. Near the top of the window that appears, click "New folder" and name the folder App.
+	1. In the area below the New Folder button, click once on the App folder to highlight it, then click Select Folder near the bottom right corner of the window.
+	1. A progress bar will appear as Unity builds this project into a Visual Studio Solution, which will be used to publish the app to the HoloLens in the next steps.
+	1. A new Windows Explorer window will pop open when Unity is done building. 
+	1. Open the App folder in the window that appears.
+	1. Double-click the "[Your project name here].sln" file inside the App folder to open it in Visual Studio.
+	1. Once Visual Studio is open, switch to Release mode, change the platform to x86, and change the build target to Device:
+		1. Click the black downward pointing triangle next to the word Debug in the dropdown menu near the top of the screen and select Release.
+		1. Click the black downward pointing triangle next to the word ARM in the dropdown menu near the top of the screen and select x86.
+		1. Click the black downward pointing triangle next to the word Local Machine in the dropdown menu near the top of the screen and select Device.
+	1. Click the green triangle to the left of the word Device in the dropdown menu near the top of the screen to build and deploy the app to your HoloLens. The Output panel near the bottom of the Visual Studio screen will display build and deployment progress.
+	1. Put on your HoloLens while you wait for build and deployment to complete. The app should launch automatically. See the troubleshooting section below for common error messages and guidance.
+
+# Troubleshooting
+1. Build and Deploy issues:
+    1. Visual Studio Error: Access is denied
+        - Typically, this error indicates that the app did build and deploy successfully, but Visual Studio was unable to launch the app on the HoloLens automatically for some reason. In our experience, as long as Visual Studio's build output window shows build and deploy were successful, you should be able to put on the HoloLens and launch the app.
+        - Potential Resolution 1: Uninstall the app from the HoloLens, then use Visual Studio to build and deploy the app again.
+        - Potential Resolution 2: Delete the App folder that contains the Visual Studio solution, create a new, empty App folder in its place, and redo all Build and Deploy steps above.
+    1. Visual Studio Error: Could not deploy while a user-defined section is open
+        - We tend to see this error when we are repeatedly building and deploying to HoloLens after making small adjustments to our Unity scene or scripting. If you see this error, your Visual Studio project did not build and deploy to the HoloLens properly.
+        - Potential Resolution 1: Clean the Visual Studio solution and try running the app without debugging again. 
+        - Potential Resolution 2: Delete the App folder that contains the Visual Studio solution, create a new, empty App folder in its place, and redo all Build and Deploy steps above.
 
 
 
@@ -157,12 +297,5 @@ Once the pull is received, we will evaluate the changes. If pull request is appr
 We aim to review pull request changes in a week.
 Thank you for contributing to MRStarterKit!
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
 
-Working App Demo : 
-1. https://www.youtube.com/watch?v=O6x1AsDEqno
-2. https://www.youtube.com/watch?v=CEtRWAKekWA
-3. https://www.youtube.com/watch?v=0jjTI3yN78w
+

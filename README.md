@@ -21,6 +21,7 @@ If you're new to Unity and HoloLens, try our **[MixedRealityStarterKitDemo](http
 1. Unity 2018.2.16f1, available here: https://unity3d.com/get-unity/download/archive
 	- Developing for HoloLens usually requires a specific version of Unity. We've found Unity 2018.2.16f1, available at the link above, to work best with this project.
 	- You can install multiple versions of Unity on your PC by customizing the installation path during the initial install by adjusting the "Unity install folder." We tend to have 2 or 3 versions of Unity installed at any given time, so our standard is to name the install folder after the specific Unity version it will contain. This screenshot shows a custom install path for Unity 2018.2.16f1:
+	&nbsp;
 	![unity install path](https://user-images.githubusercontent.com/33156643/52063350-13acd180-2538-11e9-8275-60183ddedefc.PNG)
 
 

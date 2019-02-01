@@ -150,7 +150,7 @@ In this guide, we will step through building a HoloLens app from start to finish
 	1. Resize your model as needed. You may need to scale your model's size up or down to get it to fit properly into the scene so you'll see it when the app launches. 
 		1. In Unity's Hierarchy panel, click once on your model's name to select it.
 		1. In Unity's Inspector panel, located on the right side of the screen, you will see a Transform section.
-		1. In the Transform section, adjust the X, Y, and Z values next to the Scale heading up or down as needed to get your model to an appropriate size. Try to make it a little smaller than the visible user interface elements. Always set the Scale's X, Y, and Z values to be the same (e.g. X = 0.5, Y = 0.5, Z = 0.5) to increase or decrease size while keeping the model's aspect ration intact (so it doesn't look squished or stretched).
+		1. In the Transform section, adjust the X, Y, and Z values next to the Scale heading up or down as needed to get your model to an appropriate size. Try to make it a little smaller than the visible user interface elements. Always set the Scale's X, Y, and Z values to be the same (e.g. X = 0.5, Y = 0.5, Z = 0.5) to increase or decrease size while keeping the model's aspect ratio intact (so it doesn't look squished or stretched).
 		![unity model inspector scale](https://user-images.githubusercontent.com/33156643/52066128-8a000280-253d-11e9-92c6-c910fafae779.png)
 
 			1. If you're using the SampleModel included in this repository, use these values: 
@@ -245,6 +245,7 @@ In this guide, we will step through building a HoloLens app from start to finish
 			&nbsp;
 
 			![button on click manipulable](https://user-images.githubusercontent.com/33156643/52084779-75852f80-2568-11e9-83d2-b0ed62961619.gif)
+			&nbsp;
 			*Example: Connecting ButtonRotateUp with the RotateUp () function.*
 			<br>
 

@@ -28,7 +28,7 @@ If you're new to Unity and HoloLens, try our **[MixedRealityStarterKitDemo](http
 
 1. Visual Studio 2017 or higher, available here: https://www.visualstudio.com/downloads/
 	 - Select the option to install Universal Windows Platform development tools when prompted by Visual Studio installer.
-1. Microsoft Mixed Reality Toolkit, available here: https://github.com/Microsoft/MixedRealityToolkit-Unity
+1. Microsoft Mixed Reality Toolkit for Unity version 2017.4.2.0, available here: https://github.com/Microsoft/MixedRealityToolkit-Unity/archive/2017.4.2.0.zip
 
 ### Hardware Requirements
 1. Windows 10-compatible PC with sufficient resources for software dependencies above.
@@ -52,7 +52,7 @@ In this guide, we will step through building a HoloLens app from start to finish
 	
 
 	1. Clone or download this repository from GitHub.
-	1. Clone or download Microsoft's Mixed Reality Toolkit from https://github.com/Microsoft/MixedRealityToolkit-Unity
+	1. Download Microsoft's Mixed Reality Toolkit for Unity version 2017.4.2.0 from https://github.com/Microsoft/MixedRealityToolkit-Unity/archive/2017.4.2.0.zip
 	1. Open Unity and create a new project:
 		1. Ensure that the 3D option is selected next to the project's name.
 		1. Tip: Keep folder paths and project names short and do not include spaces in your project's name. Unity struggles with long file paths and file names as well as spaces in those paths.

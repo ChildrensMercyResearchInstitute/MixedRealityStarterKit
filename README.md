@@ -19,8 +19,17 @@ If you're new to Unity and HoloLens, try our **[MixedRealityStarterKitDemo](http
 1. Microsoft Windows 10 with Fall Creator's Update installed.
 1. HoloLens Developer Mode enabled. Read how to enable Developer Mode here: https://docs.microsoft.com/en-us/windows/mixed-reality/using-visual-studio
 1. Unity 2018.2.16f1, available here: https://unity3d.com/get-unity/download/archive
-	- Developing for HoloLens usually requires a specific version of Unity. We've found Unity 2018.2.16f1, available at the link above, to work best with this project.
-	- You can install multiple versions of Unity on your PC by customizing the installation path during the initial install by adjusting the "Unity install folder." We tend to have 2 or 3 versions of Unity installed at any given time, so our standard is to name the install folder after the specific Unity version it will contain. 
+    - Developing for HoloLens usually requires a specific version of Unity. We've found Unity 2018.2.16f1, available at the link above, to work best with this project.
+        - Unity is offered in a variety of paid and free (also referred to as Unity Personal) licensing scenarios. 
+        - It's best to check with your IT administrators in regards to whether you need a paid license before downloading at your organization. 
+        - You are allowed download and run past versions of Unity from the Unity Download Archive with either a paid or a free license.
+        - Additional Unity licensing information is available here: https://store.unity.com/ 
+        - To get started with a free Unity Personal license:
+            1. Visit this link https://store.unity.com/download?ref=personal
+            1. Accept the Terms of Service.
+            1. Scroll down and click the "Older Versions of Unity" link near the bottom of the page.
+            1. In the Unity Download Archive, scroll down to Unity 2018.2.16 (15 Nov, 2018), click the Downloads (Win) dropdown, and select Unity Installer.
+    - If needed, you or your IT administrator can install multiple versions of Unity on your PC by customizing the installation path during the initial install by adjusting the "Unity install folder." We tend to have 2 or 3 versions of Unity installed at any given time while we test out newer versions of Unity with our existing source code, so our standard is to name the install folder after the specific Unity version it will contain. 
 	- This screenshot shows a custom install path for Unity 2018.2.16f1:
 	
 	![unity install path](https://user-images.githubusercontent.com/33156643/52063350-13acd180-2538-11e9-8275-60183ddedefc.PNG)

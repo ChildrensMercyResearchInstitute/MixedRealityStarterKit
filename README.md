@@ -289,8 +289,30 @@ In this guide, we will step through building a HoloLens app from start to finish
 		1. Click the black downward pointing triangle next to the word Debug in the dropdown menu near the top of the screen and select Release.
 		1. Click the black downward pointing triangle next to the word ARM in the dropdown menu near the top of the screen and select x86.
 		1. Click the black downward pointing triangle next to the word Local Machine in the dropdown menu near the top of the screen and select Device.
+	1. Change the Package.appxmanifest file's Display name from "MRStarterKitDemo" to something else:
+		1. Double-click the Package.appxmanifest file located in Visual Studio's Solution Explorer panel:
+	![image](https://user-images.githubusercontent.com/33156643/54771025-733b6b00-4bd2-11e9-9ef1-0519ab5c5240.png)
+
+			*Visual Studio Solution Explorer panel*
+			<br><br>
+		1. Change the Display name in the screen that appears. This instructs Visual Studio to create a unique identifier for your app and helps prevent deployment errors:
+
+		![image](https://user-images.githubusercontent.com/33156643/54771423-3e7be380-4bd3-11e9-830a-3d04f955a552.png)
+		&nbsp;
+			*The Display name field comes pre-populated with "MRStarterKitDemo" - change this to a name of your choosing.*
+			<br><br>
+			![image](https://user-images.githubusercontent.com/33156643/54771457-52274a00-4bd3-11e9-8c1c-9386185fab34.png)
+			&nbsp;
+			*Name change completed, ready to build and deploy app to HoloLens.*
+			<br><br>
 	1. Click the green triangle to the left of the word Device in the dropdown menu near the top of the screen to build and deploy the app to your HoloLens. The Output panel near the bottom of the Visual Studio screen will display build and deployment progress.
-	1. Put on your HoloLens while you wait for build and deployment to complete. The app should launch automatically. See the troubleshooting section below for common error messages and guidance.
+
+	![image](https://user-images.githubusercontent.com/33156643/54779255-bef71000-4be4-11e9-87a5-c574b6084eed.png)
+	
+	&nbsp;
+	*Visual Studio menu with Device button highlighted.*
+			<br><br>
+	1. Without disconnecting the USB cable, power on on your HoloLens and wear it on your head while you wait for build and deployment to complete. The app should launch on the HoloLens automatically. See the troubleshooting section below for common error messages and guidance.
 
 # Troubleshooting
 1. Build and Deploy issues:
@@ -302,7 +324,9 @@ In this guide, we will step through building a HoloLens app from start to finish
         - We tend to see this error when we are repeatedly building and deploying to HoloLens after making small adjustments to our Unity scene or scripting. If you see this error, your Visual Studio project did not build and deploy to the HoloLens properly.
         - Potential Resolution 1: Clean the Visual Studio solution and try running the app without debugging again. 
         - Potential Resolution 2: Delete the App folder that contains the Visual Studio solution, create a new, empty App folder in its place, and redo all Build and Deploy steps above.
-
+	1. Visual Studio Error: DEP2500 "Registration of app succeded but package information can not be found"
+		- You likely need to change the "Display name" of your app to a new, unique value in the Package.appxmanifest file mentioned in the deployment instructions above. Visual Studio is having trouble deploying your app due to a GUID (globally unique identifier) conflict on its internal storage. Changing the Display name generates a new GUID for your app, which should allow Visual Studio to deploy the app properly.
+		- If you receive this error when re-deploying an app you've previously loaded to your HoloLens, try uninstalling the app on the HoloLens and starting over in the "Building and deploying your project to HoloLens" section of this documentation.
 
 
 # Contribute
